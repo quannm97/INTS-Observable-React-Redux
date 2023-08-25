@@ -1,0 +1,1 @@
+export const FAKE_PRODUCT_URL = 'https://64e8036fb0fd9648b7906e76.mockapi.io/api/v1/'
