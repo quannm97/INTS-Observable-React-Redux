@@ -1,41 +1,51 @@
 import React, { useState } from "react";
 import { addProductsRequest } from "../../redux/action/product.action";
 import { useDispatch } from "react-redux";
+import "./ProductForm.scss";
 
-
-const ProductForm = () => {
-    const dispatch = useDispatch()
+const ProductForm = ({setProductConfig}) => {
+    const dispatch = useDispatch();
 
     const [state, setState] = useState({
-        name: '',
-        price: '',
-        description: '',
-        category: ''
-    })
+        name: "",
+        price: "",
+        description: "",
+        category: "",
+    });
 
     const handleOnChange = (event) => {
-        const {name, value} = event.target
-        
+        const { name, value } = event.target;
+
         setState((prevState) => ({
             ...prevState,
-            [name]: value
-        }))
-    }
-    
-
+            [name]: value,
+        }));
+    };
 
     const handleOnSubmit = (event) => {
-        event.preventDefault(); 
-        dispatch(addProductsRequest(state))
-    }
+        event.preventDefault();
+        dispatch(addProductsRequest(state));
+        setProductConfig(prev => !prev)
+    };
     return (
         <>
-            <form onSubmit={handleOnSubmit}>
-                <input type="text" name='name' onChange={handleOnChange}/>
-                <input type="text" name='price' onChange={handleOnChange}/>
-                <input type="text" name='description' onChange={handleOnChange}/>
-                <input type="text" name='category' onChange={handleOnChange}/>
-                <button type='submit'>Click me!</button>
+            <form className="productManage" onSubmit={handleOnSubmit}>
+                <label>Name</label>
+                <input type="text" name="name" onChange={handleOnChange} />
+                <label>Price</label>
+
+                <input type="text" name="price" onChange={handleOnChange} />
+                <label>Description</label>
+
+                <input
+                    type="text"
+                    name="description"
+                    onChange={handleOnChange}
+                />
+                <label>Category</label>
+
+                <input type="text" name="category" onChange={handleOnChange} />
+                <button type="submit">Click me!</button>
             </form>
         </>
     );

@@ -11,7 +11,7 @@ const fetchProductsEpic = (action$) => action$.pipe(
         ofType(fetchProductsRequest.type),
         mergeMap(() => {
             return fetchProductListAPI().pipe(
-                delay(3000),
+                delay(1500),
                 map((data) => fetchProductsSuccess(data)),
                 catchError((error) => fetchProductsFailure(error))
             );

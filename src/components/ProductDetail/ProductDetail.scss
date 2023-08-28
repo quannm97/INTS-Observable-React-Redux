@@ -1,0 +1,38 @@
+// styles.scss
+
+.product {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 0 auto;
+
+    .product-image {
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    .product-title {
+        font-size: 1.5rem;
+        margin-top: 8px;
+    }
+
+    .product-description {
+        margin-top: 8px;
+    }
+
+    .product-price {
+        font-weight: bold;
+        margin-top: 8px;
+    }
+
+    .product-category {
+        color: #888;
+        margin-top: 8px;
+    }
+}

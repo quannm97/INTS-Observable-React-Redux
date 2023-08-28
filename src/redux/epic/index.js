@@ -1,7 +1,12 @@
 import { combineEpics } from "redux-observable";
 import fetchProductsEpic from "./fetchProductsEpic";
-import crudProductEpic from "./crudProductsEpic";
+import addProductEpic from "./addProductEpic";
+import getProductDetail from "./getProductDetailEpic";
 
-const rootEpic = combineEpics(fetchProductsEpic, crudProductEpic)
+const rootEpic = combineEpics(
+    fetchProductsEpic,
+    addProductEpic,
+    getProductDetail
+);
 
-export default rootEpic
+export default rootEpic;

@@ -4,20 +4,23 @@ import {
     addProductsFailure,
     addProductsRequest,
     addProductsSuccess,
+    fetchProductsRequest,
 } from "../action/product.action";
-import { crudProductAPI } from "../../services/productCRUD.service";
+import { postProductAPI } from "../../services/productCRUD.service";
 
-const crudProductEpic = (action$) =>
+const addProductEpic = (action$) =>
     action$.pipe(
         ofType(addProductsRequest.type),
         mergeMap((action) => {
-            return crudProductAPI(action)
-            .pipe(
+            return postProductAPI(action).pipe(
                 tap((response) => {
-                    console.log("🚀 ~ file: crudProductsEpic.js:17 ~ tap ~ response:", response)
+                    console.log(
+                        "🚀 ~ file: crudProductsEpic.js:17 ~ tap ~ response:",
+                        response
+                    );
                 }),
                 mergeMap(() => {
-                    return of(addProductsSuccess()); 
+                    return [addProductsSuccess(), fetchProductsRequest()];
                 }),
                 catchError((error) => {
                     return of(addProductsFailure(error.message));
@@ -26,4 +29,4 @@ const crudProductEpic = (action$) =>
         })
     );
 
-export default crudProductEpic;
+export default addProductEpic;
