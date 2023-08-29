@@ -1,6 +1,6 @@
 import React from 'react'
 import pagesData from './pagesData'
-import { Route, Routes, useParams } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 
 
 const Router = () => {

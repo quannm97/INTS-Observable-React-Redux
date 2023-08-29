@@ -1,5 +1,5 @@
 import { from } from "rxjs"
-import { requestProducts } from "../api/requestProducts"
+import  requestProducts  from "../api/requestProducts"
 
 export const postProductAPI = (productData) => {
     console.log("🚀 ~ file: productCRUD.service.js:5 ~ crudProductAPI ~ productData:", productData)

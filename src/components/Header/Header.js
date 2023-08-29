@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import ProductForm from "../ProductForm/ProductForm";
+import AddProductForm from "../Form/ProductForm/AddProductForm";
 
 const Header = () => {
-    const [productConfig, setProductConfig] = useState(false)
+    const [productConfig, setProductConfig] = useState(false);
     function handleOnClick() {
-        setProductConfig(prev => !prev)
-    } 
+        setProductConfig((prev) => !prev);
+    }
     return (
         <>
             <button onClick={handleOnClick}>Add Product</button>
-            {productConfig? <ProductForm setProductConfig={setProductConfig}/>:null}
+            {productConfig ? (
+                <AddProductForm setProductConfig={setProductConfig} />
+            ) : null}
         </>
     );
 };

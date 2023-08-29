@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { addProductsRequest } from "../../redux/action/product.action";
-import { useDispatch } from "react-redux";
-import "./ProductForm.scss";
+import "./EditProductForm.scss";
+import requestProducts from "../../../api/requestProducts";
+import { useParams } from "react-router-dom";
 
-const ProductForm = ({setProductConfig}) => {
-    const dispatch = useDispatch();
+const EditProductForm = ({ setProductConfig }) => {
+    const { id } = useParams();
 
     const [state, setState] = useState({
         name: "",
@@ -24,8 +24,11 @@ const ProductForm = ({setProductConfig}) => {
 
     const handleOnSubmit = (event) => {
         event.preventDefault();
-        dispatch(addProductsRequest(state));
-        setProductConfig(prev => !prev)
+        requestProducts
+            .put(`/products/${id}`, state)
+            .then((response) => console.log(response))
+            .catch(console.error());
+        setProductConfig((prev) => !prev);
     };
     return (
         <>
@@ -51,4 +54,4 @@ const ProductForm = ({setProductConfig}) => {
     );
 };
 
-export default ProductForm;
+export default EditProductForm;

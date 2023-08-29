@@ -1,5 +1,5 @@
 import { from } from "rxjs"
-import { requestProducts } from "../api/requestProducts"
+import  requestProducts  from "../api/requestProducts"
 
 
 export const fetchProductListAPI = () => {
